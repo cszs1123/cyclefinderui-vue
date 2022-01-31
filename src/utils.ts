@@ -1,0 +1,1 @@
+export const getDateFromUnixTimestamp = (ts: number): Date => new Date(ts * 1000)

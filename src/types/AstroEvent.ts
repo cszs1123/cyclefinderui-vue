@@ -1,6 +1,6 @@
 export default interface AstroEvent {
     id: null,
-    time: number,
+    time: Date,
     description: string
 }
 

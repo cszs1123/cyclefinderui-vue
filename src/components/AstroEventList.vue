@@ -9,7 +9,7 @@
           :key="index"
           @click="setActiveTutorial(astroEvent, index)"
         >
-          {{ astroEvent.time }} - {{ astroEvent.description }}
+          {{ astroEvent.time.toDateString() }} - {{ astroEvent.description }}
         </li>
       </ul>
     </div>
@@ -20,6 +20,7 @@ import { defineComponent } from "vue"
 import AstroEventDataService from "@/services/AstroEventDataService" 
 import ResponseData from "@/types/ResponseData"
 import AstroEvent from "@/types/AstroEvent"
+import { getDateFromUnixTimestamp } from "@/utils"
 
 export default defineComponent({
     name: "astroEvent-list",
@@ -35,7 +36,10 @@ export default defineComponent({
         retrieveAstroEvents(){
             AstroEventDataService.getAll()
                 .then((response: ResponseData) => {
-                    this.astroEvents = response.data
+                    var data = response.data.map((d: { time: number; description: any }) => {
+                      return {key: d.time, time: getDateFromUnixTimestamp(d.time), description: d.description}
+                    })
+                    this.astroEvents = data
                     console.log(response.data)
                 })
                 .catch((e: Error) => {
