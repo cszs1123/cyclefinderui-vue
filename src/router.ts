@@ -4,9 +4,9 @@ import { RouteRecordRaw } from "vue-router"
 const routes: Array<RouteRecordRaw> = [
     {
         path: "/",
-        alias: "/astroEvents",
-        name:"astroEvents",
-        component: () => import("./components/AstroEventList.vue")
+        alias: "/astroCalendars",
+        name:"astroCalendars",
+        component: () => import("./components/AstroCalendars.vue")
     }
 ]
 

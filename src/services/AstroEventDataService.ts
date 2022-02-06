@@ -1,8 +1,9 @@
 import http from "@/http-common"
+import AstroCalendarParameters from "@/types/AstroCalendarParameters"
 
 class AstroEventDataService {
-    getAll(): Promise<any> {
-        return http.get("/astroEvent/GetAspectsForPeriod?from=1640995261&to=1643673661")
+    getAstroEvents(params: AstroCalendarParameters): Promise<any> {
+        return http.get(`/astroEvent/GetAstroEvents?${params.generateUrlParams()}`)
     }
 }
 

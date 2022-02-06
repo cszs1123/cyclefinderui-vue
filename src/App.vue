@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <router-link to="/" class="navbar-brand">brand</router-link>
+      <router-link to="/" class="navbar-brand">Astro Calendar</router-link>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/astroEvents" class="nav-link">Astro Events</router-link>
+          <router-link to="/astroCalendars" class="nav-link">Astro Calendars</router-link>
         </li>
       </div>
     </nav>
