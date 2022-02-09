@@ -43,7 +43,9 @@ export default defineComponent({
               return new AstroEvent(d.time, d.description)
             }
           )
-          AstroCalendarStore.addNewCalendar(new AstroCalendar(params.generateUrlParams(), data))
+          if (data.length > 0){
+            AstroCalendarStore.addNewCalendar(new AstroCalendar(params.generateUrlParams(), data))
+          }
           console.log(response.data)
         })
         .catch((e: Error) => {

@@ -19,8 +19,27 @@
           <label :for="planet[1]">{{ planet[0] }}</label>
         </div>
       </div>
+      <div class="mb-3">
+        <label for="extremes" class="form-label">Select extremes:</label>
+        <div v-for="ext in parameters.extremes" :key="ext[1]">
+          <input type="checkbox" :id="ext[1]" v-model="ext[2]" @change="onParametersChanged" />
+          <label :for="ext[1]">{{ ext[0] }}</label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="aspects" class="form-label">Select aspects:</label>
+        <div v-for="asp in parameters.aspects" :key="asp[1]">
+          <input type="checkbox" :id="asp[1]" v-model="asp[2]" @change="onParametersChanged" />
+          <label :for="asp[1]">{{ asp[0] }}</label>
+        </div>
+      </div>
     </form>
-    <button type="button" class="btn btn-primary" :disabled="isSubmitDisabled" @click="onSubmit">Submit</button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      :disabled="isSubmitDisabled"
+      @click="onSubmit"
+    >Submit</button>
   </div>
 </template>
 
@@ -32,8 +51,8 @@ export default defineComponent({
   name: "astro-calendar-selector",
   props: ['years'],
   computed: {
-    isSubmitDisabled(): boolean{
-      if (this.parameters.isValid()){
+    isSubmitDisabled(): boolean {
+      if (this.parameters.isValid()) {
         return !this.paramsChanged
       }
       else return true
